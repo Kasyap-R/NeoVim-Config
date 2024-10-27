@@ -325,6 +325,12 @@ require('lazy').setup({
   -- Autopairing for brackets, parentheses, etc.
   { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
 
+  -- Java LSP
+  {
+    'mfussenegger/nvim-jdtls',
+    ft = 'java',
+  },
+
   -- LSP Plugins
   require 'custom.lsp',
 
