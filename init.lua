@@ -19,6 +19,12 @@ vim.opt.relativenumber = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
+-- Make NeoVim use spaces instead of tabs
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4 -- How many spaces a tab is in visual mode (the '>' key in visual mode indents code)
+vim.opt.softtabstop = 4 -- How many spaces to use for autoindent
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
@@ -354,7 +360,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = {}
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
@@ -372,6 +378,7 @@ require('lazy').setup({
         python = { 'isort', 'black' },
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        c = { 'clan' },
       },
     },
   },
