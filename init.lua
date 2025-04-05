@@ -16,6 +16,14 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Change lines scrolled with CTRL + u and CTRL + d
+vim.o.scroll = 10
+vim.api.nvim_create_autocmd({ 'WinNew', 'WinEnter' }, {
+  callback = function()
+    vim.wo.scroll = vim.o.scroll
+  end,
+})
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
@@ -71,9 +79,6 @@ vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -385,6 +390,7 @@ require('lazy').setup({
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
         c = { 'clang_format' },
         cpp = { 'clang_format' },
+        rust = { 'rustfmt' },
       },
     },
   },
